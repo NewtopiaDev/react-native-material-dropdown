@@ -566,7 +566,7 @@ export default class Dropdown extends PureComponent {
     if (null == item) {
       return null;
     }
-
+    
     let { selected, leftInset, rightInset } = this.state;
 
     let {
@@ -627,10 +627,9 @@ export default class Dropdown extends PureComponent {
         paddingRight: rightInset,
       },
     ];
-
     return (
       <DropdownItem index={index} {...props}>
-        <Text style={[styles.item, itemTextStyle, textStyle]} numberOfLines={1}>
+        <Text accessibilityLabel={item.accessibilityLabel} style={[styles.item, itemTextStyle, textStyle]} numberOfLines={1}>
           {title}
         </Text>
       </DropdownItem>
