@@ -507,7 +507,8 @@ export default class Dropdown extends PureComponent {
       <TextField
         label=''
         labelHeight={dropdownOffset.top - Platform.select({ ios: 1, android: 2 })}
-
+        accessible={false}
+        importantForAccessibility='no'
         {...props}
 
         value={title}
@@ -538,6 +539,7 @@ export default class Dropdown extends PureComponent {
 
     return (
       <Ripple
+        accessible={false}
         style={style}
         rippleColor={rippleColor}
         rippleDuration={rippleDuration}
@@ -723,10 +725,14 @@ export default class Dropdown extends PureComponent {
       accessibilityLabel,
     };
 
+    this.props.dropdown && this.props.dropdownOpen(this.state.modal)
+
     return (
       <View onLayout={this.onLayout} ref={this.updateContainerRef} style={containerStyle}>
         <TouchableWithoutFeedback {...touchableProps}>
-          <View pointerEvents='box-only'>
+          <View 
+            importantForAccessibility='no'
+            pointerEvents='box-only'>
             {this.renderBase(props)}
             {this.renderRipple()}
           </View>
