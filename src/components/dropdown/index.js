@@ -507,9 +507,10 @@ export default class Dropdown extends PureComponent {
       <TextField
         label=''
         labelHeight={dropdownOffset.top - Platform.select({ ios: 1, android: 2 })}
-        allowFontScaling={false}
+        accessible={false}
+        importantForAccessibility='no'
         {...props}
-
+        allowFontScaling={false}
         value={title}
         editable={false}
         onChangeText={undefined}
@@ -538,6 +539,7 @@ export default class Dropdown extends PureComponent {
 
     return (
       <Ripple
+        accessible={false}
         style={style}
         rippleColor={rippleColor}
         rippleDuration={rippleDuration}
@@ -629,7 +631,7 @@ export default class Dropdown extends PureComponent {
     ];
     return (
       <DropdownItem index={index} {...props}>
-        <Text  allowFontScaling={false} accessibilityLabel={item.accessibilityLabel} style={[styles.item, itemTextStyle, textStyle]} numberOfLines={1}>
+        <Text allowFontScaling={false} accessibilityLabel={item.accessibilityLabel} style={[styles.item, itemTextStyle, textStyle]} numberOfLines={1}>
           {title}
         </Text>
       </DropdownItem>
@@ -723,10 +725,14 @@ export default class Dropdown extends PureComponent {
       accessibilityLabel,
     };
 
+    this.props.dropdown && this.props.dropdownOpen(this.state.modal)
+
     return (
       <View onLayout={this.onLayout} ref={this.updateContainerRef} style={containerStyle}>
         <TouchableWithoutFeedback {...touchableProps}>
-          <View pointerEvents='box-only'>
+          <View 
+            importantForAccessibility='no'
+            pointerEvents='box-only'>
             {this.renderBase(props)}
             {this.renderRipple()}
           </View>
