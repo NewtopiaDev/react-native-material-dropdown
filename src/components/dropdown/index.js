@@ -510,7 +510,7 @@ export default class Dropdown extends PureComponent {
         accessible={false}
         importantForAccessibility='no'
         {...props}
-
+        allowFontScaling={false}
         value={title}
         editable={false}
         onChangeText={undefined}
@@ -631,7 +631,7 @@ export default class Dropdown extends PureComponent {
     ];
     return (
       <DropdownItem index={index} {...props}>
-        <Text accessibilityLabel={item.accessibilityLabel} style={[styles.item, itemTextStyle, textStyle]} numberOfLines={1}>
+        <Text allowFontScaling={false} accessibilityLabel={item.accessibilityLabel} style={[styles.item, itemTextStyle, textStyle]} numberOfLines={1}>
           {title}
         </Text>
       </DropdownItem>
