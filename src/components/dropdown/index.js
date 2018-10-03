@@ -504,18 +504,15 @@ export default class Dropdown extends PureComponent {
       String(title);
 
     return (
-      <TextField
-        label=''
-        labelHeight={dropdownOffset.top - Platform.select({ ios: 1, android: 2 })}
-        accessible={false}
-        importantForAccessibility='no'
-        {...props}
-        allowFontScaling={false}
-        value={title}
-        editable={false}
-        onChangeText={undefined}
-        renderAccessory={renderAccessory}
-      />
+      <View style={this.props.style}>
+        <Text
+          style={this.props.titleStyle}
+          allowFontScaling={false}
+        >
+          {title}
+        </Text>
+        {this.props.renderAccessory}
+      </View>
     );
   }
 
