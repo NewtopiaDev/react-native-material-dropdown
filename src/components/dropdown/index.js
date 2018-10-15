@@ -511,7 +511,7 @@ export default class Dropdown extends PureComponent {
         >
           {title}
         </Text>
-        {this.props.renderAccessory}
+        {this.props.renderAccessory(this.props.iconSize)}
       </View>
     );
   }
